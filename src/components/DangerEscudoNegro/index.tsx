@@ -1,6 +1,6 @@
 import { Container } from './styles';
 
-interface DangerEscudoNegroProps {
+export interface DangerEscudoNegroProps {
   danger: boolean;
   handleDanger(): void;
 }

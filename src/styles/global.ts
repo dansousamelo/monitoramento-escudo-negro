@@ -2,9 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
     /* width */
-    ::-webkit-scrollbar {
-      display: none;
-  }
+
 
   * {
     margin: 0;

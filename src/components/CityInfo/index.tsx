@@ -1,8 +1,7 @@
 import { Container, Wrapper } from './styles';
 import { GiPunchBlast } from 'react-icons/gi';
-import { memo, useCallback, useState } from 'react';
 import { DangerEscudoNegro } from '../DangerEscudoNegro';
-
+import { memo, useCallback, useState } from 'react';
 
 interface CityProps {
   cityInfo: {
@@ -14,20 +13,15 @@ interface CityProps {
 export function CityInfoComponent({ cityInfo }: CityProps){
   const [danger, setDanger] = useState(false);
 
-  // Fazer primeiro esse
-  // function handleDanger(){
-  //   setDanger(!danger);
-  // }
-
-  const handleDanger = useCallback(()=>{
+  function handleDanger(){
     setDanger(!danger);
-  }, [danger])
+  }
+
   return (
     <Container danger={danger}>
       <Wrapper danger={danger}>
         <h2>{cityInfo.city}</h2>
         <p>{cityInfo.population} habitantes</p>
-        {/* Fazer depois */}
         <DangerEscudoNegro danger={danger} handleDanger={handleDanger}/>
       </Wrapper>
       
