@@ -2,6 +2,11 @@ import { Container, Wrapper } from './styles';
 import { GiPunchBlast } from 'react-icons/gi';
 import { DangerEscudoNegro } from '../DangerEscudoNegro';
 import { memo, useCallback, useState } from 'react';
+import dynamic from 'next/dynamic';
+
+const MessageImportant = dynamic(()=>{
+  return import('../MessageImportant').then(mod => mod.MessageImportant)
+})
 
 interface CityProps {
   cityInfo: {
@@ -13,9 +18,9 @@ interface CityProps {
 export function CityInfoComponent({ cityInfo }: CityProps){
   const [danger, setDanger] = useState(false);
 
-  function handleDanger(){
+  const handleDanger = useCallback(() => {
     setDanger(!danger);
-  }
+  }, [danger])
 
   return (
     <Container danger={danger}>
@@ -26,7 +31,7 @@ export function CityInfoComponent({ cityInfo }: CityProps){
       </Wrapper>
       
       <GiPunchBlast style={{ cursor: 'pointer' }} size={56} color={danger ? '#FCFCFC' : '1B1B1B'} onClick={handleDanger}/>
-      
+      {danger && <MessageImportant />}
     </Container>
   )
 }

@@ -13,8 +13,15 @@ interface SearchResultsProps {
 
 // Search Results não é muito grande
 export function SearchResults({ results }: SearchResultsProps) {
+  const people = useMemo(() => {
+    return results.reduce((total, city)=>{
+        return total + Number(city.population);
+      }, 0)
+  }, [results])
+
   return (
-    <Container> 
+    <Container>
+      <h2>{people} vida(s) que serão protegidas </h2>
       {results.map(city => {
         return(
           <CityInfo key={city.city} cityInfo={city}/>
